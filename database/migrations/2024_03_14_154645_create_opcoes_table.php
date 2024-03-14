@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('enquetes', function (Blueprint $table) {
+        Schema::create('opcoes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('titulo_enquete');
-            $table->date('data_inicio');
-            $table->date('data_termino');
+            $table->foreignId('pergunta_id')->constrained()->cascadeOnDelete();
+            $table->string('opcao');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enquetes');
+        Schema::dropIfExists('opcoes');
     }
 };

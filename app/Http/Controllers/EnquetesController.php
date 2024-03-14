@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Enquetes;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
@@ -35,9 +36,23 @@ class EnquetesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+
+        $validated_enquete = $request->validate([
+            'titulo_enquete' => 'required|string|max:255',
+            'data_inicio' => 'required|date',
+            'data_termino' => 'required|date',
+        ]);
+
+        $validated_perguntas = $request->validate([
+            'perguntas' => 'required|string|max:255',
+        ]);
+
+        $request->user()->enquetes()->create($validated_enquete);
+        $request->user()->enquetes()->perguntas()->create($validated_perguntas);
+
+        return redirect(route('enquetes.index'));
     }
 
     /**

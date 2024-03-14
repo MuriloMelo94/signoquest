@@ -5,18 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Enquetes extends Model
+class Perguntas extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'titulo_enquete',
-        'data_inicio',
-        'data_termino',
-        'data_fim'
+        'pergunta'
     ];
 
-    public function perguntas()
+    public function opcoes()
     {
         return $this->hasMany(Opcoes::class);
     }
