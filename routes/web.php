@@ -31,6 +31,6 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('enquetes', EnquetesController::class)
     ->only(['index', 'store'])
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth']);
 
 require __DIR__.'/auth.php';

@@ -36,21 +36,33 @@ class EnquetesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
 
-        $validated_enquete = $request->validate([
+        $validated = $request->validate([
             'titulo_enquete' => 'required|string|max:255',
             'data_inicio' => 'required|date',
             'data_termino' => 'required|date',
+            'perguntas' => 'required',
+            'opcoes' => 'required',
         ]);
 
-        $validated_perguntas = $request->validate([
-            'perguntas' => 'required|string|max:255',
-        ]);
+        $enquete = $request->user()->enquetes()->create($validated);
 
-        $request->user()->enquetes()->create($validated_enquete);
-        $request->user()->enquetes()->perguntas()->create($validated_perguntas);
+        foreach($validated['perguntas'] as $pergunta){
+            $pergunta = $enquete->perguntas()->create([
+                'pergunta' => $pergunta['pergunta'],
+                'enquete_id' => $enquete->id,
+            ]);
+
+        }
+
+        foreach($validated['opcoes'] as $opcao){
+            $opcao = $pergunta->opcoes()->create([
+                'opcao' => $opcao['opcao'],
+                'pergunta_id' => $pergunta->id,
+            ]);
+        }
 
         return redirect(route('enquetes.index'));
     }

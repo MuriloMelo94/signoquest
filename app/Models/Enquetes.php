@@ -18,6 +18,6 @@ class Enquetes extends Model
 
     public function perguntas()
     {
-        return $this->hasMany(Opcoes::class);
+        return $this->hasMany(Perguntas::class, 'enquete_id');
     }
 }
