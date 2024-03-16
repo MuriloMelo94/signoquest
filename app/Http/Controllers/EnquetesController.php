@@ -17,7 +17,9 @@ class EnquetesController extends Controller
      */
     public function index(): View
     {
-        return view('enquetes.index');
+        return view('enquetes.index', [
+            'enquetes' => Enquetes::with('user')->latest()->get(),
+        ]);
     }
 
     /**
@@ -27,7 +29,7 @@ class EnquetesController extends Controller
      */
     public function create()
     {
-        //
+        return view('enquetes.create');
     }
 
     /**

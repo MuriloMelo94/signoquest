@@ -16,6 +16,9 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('enquetes.index')" :active="request()->routeIs('enquetes.index')">
+                        {{ __('Ver Enquetes') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('enquetes.create')" :active="request()->routeIs('enquetes.create')">
                         {{ __('Criar Enquete') }}
                     </x-nav-link>
                 </div>
