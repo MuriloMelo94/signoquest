@@ -11,7 +11,7 @@ class Opcoes extends Model
     use HasFactory;
 
     protected $fillable = [
-        'opcao',
+        'titulo',
         'pergunta_id',
     ];
 

@@ -11,7 +11,7 @@ class Perguntas extends Model
     use HasFactory;
 
     protected $fillable = [
-        'pergunta',
+        'titulo',
         'enquete_id'
     ];
 

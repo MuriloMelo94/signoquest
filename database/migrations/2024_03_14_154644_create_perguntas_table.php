@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('perguntas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('enquete_id')->constrained()->cascadeOnDelete();
-            $table->string('pergunta');
+            $table->string('titulo');
             $table->timestamps();
         });
     }

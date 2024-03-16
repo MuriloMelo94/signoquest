@@ -11,7 +11,7 @@ class Enquetes extends Model
     use HasFactory;
 
     protected $fillable = [
-        'titulo_enquete',
+        'titulo',
         'data_inicio',
         'data_termino',
         'data_fim'

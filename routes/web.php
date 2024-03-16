@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('enquetes', EnquetesController::class)
-    ->only(['index', 'store', 'create'])
+    ->only(['index', 'create', 'store'])
     ->middleware(['auth']);
 
 require __DIR__.'/auth.php';

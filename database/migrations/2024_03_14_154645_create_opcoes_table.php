@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('opcoes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pergunta_id')->constrained()->cascadeOnDelete();
-            $table->string('opcao');
+            $table->string('titulo');
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('enquetes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('titulo_enquete');
+            $table->string('titulo');
             $table->date('data_inicio');
             $table->date('data_termino');
             $table->timestamps();

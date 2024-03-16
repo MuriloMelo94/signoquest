@@ -13,7 +13,11 @@
                                 <small class="ml-2 text-sm text-gray-600">{{ $enquete->created_at->format('j M Y, g:i a') }}</small>
                             </div>
                         </div>
-                        <p class="mt-4 text-lg text-gray-900">{{ $enquete->titulo_enquete }}</p>
+                        <p class="my-4 text-lg font-bold text-gray-900">{{ $enquete->titulo }}</p>
+                        <div>
+                            <span class="text-gray-800">Aceita respostas entre os dias: </span>
+                            <small class="ml-2 text-sm text-gray-600">{{ date('d/m/Y', strtotime($enquete->data_inicio)) }} e {{ date('d/m/Y', strtotime($enquete->data_termino)) }}</small>
+                        </div>
                     </div>
                 </div>
             @endforeach

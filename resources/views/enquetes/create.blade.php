@@ -3,7 +3,7 @@
         <form method="POST" action="{{ route('enquetes.store') }}">
             @csrf
             <h3 class="font-medium text-gray-700 mb-2">Título da enquete:</h3>
-            <x-text-input name="titulo_enquete" autocomplete="off" required placeholder="{{ __('Qual o título da nova enquete?') }}"
+            <x-text-input name="titulo" autocomplete="off" required placeholder="{{ __('Qual o título da nova enquete?') }}"
                 class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">{{ old('title') }}</x-text-input>
             <div class="flex">
                 <div class="flex-initial w-64">
@@ -24,26 +24,26 @@
                 <div class="p-4 bg-white shadow-sm rounded-lg">
                     <div class="flex flex-col">
                         <div id="perguntas" data-contagem="1">
-                            <x-input-label class="mt-2" for="pergunta">Título da pergunta:</x-input-label>
-                            <x-text-input required name="perguntas[1][pergunta]" autocomplete="off" placeholder="{{ __('Escreva sua pergunta') }}"
+                            <x-input-label class="mt-2" for="pergunta[1]">Título da pergunta:</x-input-label>
+                            <x-text-input required name="perguntas[1][titulo]" autocomplete="off" placeholder="{{ __('Escreva sua pergunta') }}"
                                 class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
                         </div>
                         <div id="opcoes" class="flex flex-col space-y-2">
-                            <x-input-label class="mt-2" for="pergunta">Opções de resposta:</x-input-label>
+                            <x-input-label class="mt-2" for="opcoes">Opções de resposta:</x-input-label>
                             <div class="flex items-center">
-                                <x-text-input required autocomplete="off" name="opcoes[1][opcao]" placeholder="{{ __('Escreva uma opção de resposta') }}"
+                                <x-text-input required autocomplete="off" name="opcoes[1][titulo]" placeholder="{{ __('Escreva uma opção de resposta') }}"
                                     class="block w-3/4 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
                                 <span class=" ms-2 py-2 font-medium text-sm text-gray-700 h-auto">(*)Obrigatório</span>
                             </div>
 
                             <div class="flex items-center">
-                                <x-text-input required autocomplete="off" name="opcoes[1][opcao]" placeholder="{{ __('Escreva uma opção de resposta') }}"
+                                <x-text-input required autocomplete="off" name="opcoes[1][titulo]" placeholder="{{ __('Escreva uma opção de resposta') }}"
                                     class="block w-3/4 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
                                 <span class=" ms-2 py-2 font-medium text-sm text-gray-700 h-auto">(*)Obrigatório</span>
                             </div>
 
                             <div class="flex items-center">
-                                <x-text-input required autocomplete="off" name="opcoes[1][opcao]" placeholder="{{ __('Escreva uma opção de resposta') }}"
+                                <x-text-input required autocomplete="off" name="opcoes[1][titulo]" placeholder="{{ __('Escreva uma opção de resposta') }}"
                                     class="block w-3/4 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
                                 <span class=" ms-2 py-2 font-medium text-sm text-gray-700 h-auto">(*)Obrigatório</span>
                             </div>
@@ -75,7 +75,7 @@
 
         $(this).parent().children("#opcoes").append(`
         <div class="flex items-center">
-            <x-text-input name="opcoes[`+j+`][opcao]" autocomplete="off" required placeholder="{{ __('Escreva uma opção de resposta') }}"
+            <x-text-input name="opcoes[`+j+`][titulo]" autocomplete="off" required placeholder="{{ __('Escreva uma opção de resposta') }}"
             class="block w-3/4 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
             </div>
             `);
@@ -91,25 +91,25 @@
                 <div class="flex flex-col">
                     <div id="perguntas" data-contagem="[`+i+`]">
                         <x-input-label class="mt-2" for="perguntas[`+i+`]">Título da pergunta:</x-input-label>
-                        <x-text-input name="perguntas[`+i+`][pergunta]" required autocomplete="off" placeholder="{{ __('Escreva sua pergunta') }}"
+                        <x-text-input name="perguntas[`+i+`][titulo]" required autocomplete="off" placeholder="{{ __('Escreva sua pergunta') }}"
                                 class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
                     </div>
                     <div id="opcoes" class="flex flex-col space-y-2">
                         <x-input-label class="mt-2" for="pergunta">Opções de resposta:</x-input-label>
                         <div class="flex items-center">
-                            <x-text-input name="opcoes[`+i+`][opcao]" required autocomplete="off" placeholder="{{ __('Escreva uma opção de resposta') }}"
+                            <x-text-input name="opcoes[`+i+`][titulo]" required autocomplete="off" placeholder="{{ __('Escreva uma opção de resposta') }}"
                                 class="block w-3/4 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
                             <span class=" ms-2 py-2 font-medium text-sm text-gray-700 h-auto">(*)Obrigatório</span>
                         </div>
 
                         <div class="flex items-center">
-                            <x-text-input name="opcoes[`+i+`][opcao]" required autocomplete="off" placeholder="{{ __('Escreva uma opção de resposta') }}"
+                            <x-text-input name="opcoes[`+i+`][titulo]" required autocomplete="off" placeholder="{{ __('Escreva uma opção de resposta') }}"
                                 class="block w-3/4 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
                             <span class=" ms-2 py-2 font-medium text-sm text-gray-700 h-auto">(*)Obrigatório</span>
                         </div>
 
                         <div class="flex items-center">
-                            <x-text-input name="opcoes[`+i+`][opcao]" required autocomplete="off" placeholder="{{ __('Escreva uma opção de resposta') }}"
+                            <x-text-input name="opcoes[`+i+`][titulo]" required autocomplete="off" placeholder="{{ __('Escreva uma opção de resposta') }}"
                                 class="block w-3/4 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
                             <span class=" ms-2 py-2 font-medium text-sm text-gray-700 h-auto">(*)Obrigatório</span>
                         </div>

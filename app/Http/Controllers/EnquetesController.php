@@ -42,7 +42,7 @@ class EnquetesController extends Controller
     {
 
         $validated = $request->validate([
-            'titulo_enquete' => 'required|string|max:255',
+            'titulo' => 'required|string|max:255',
             'data_inicio' => 'required|date',
             'data_termino' => 'required|date',
             'perguntas' => 'required',
@@ -53,7 +53,7 @@ class EnquetesController extends Controller
 
         foreach($validated['perguntas'] as $pergunta){
             $pergunta = $enquete->perguntas()->create([
-                'pergunta' => $pergunta['pergunta'],
+                'titulo' => $pergunta['titulo'],
                 'enquete_id' => $enquete->id,
             ]);
 
@@ -61,7 +61,7 @@ class EnquetesController extends Controller
 
         foreach($validated['opcoes'] as $opcao){
             $opcao = $pergunta->opcoes()->create([
-                'opcao' => $opcao['opcao'],
+                'titulo' => $opcao['titulo'],
                 'pergunta_id' => $pergunta->id,
             ]);
         }

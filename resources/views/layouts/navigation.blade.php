@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('enquetes.index')" :active="request()->routeIs('enquetes.index')">
-                        {{ __('Ver Enquetes') }}
+                        {{ __('Enquetes') }}
                     </x-nav-link>
                     <x-nav-link :href="route('enquetes.create')" :active="request()->routeIs('enquetes.create')">
                         {{ __('Criar Enquete') }}
@@ -77,6 +77,9 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('enquetes.index')" :active="request()->routeIs('enquetes.index')">
+                {{ __('Enquetes') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('enquetes.create')" :active="request()->routeIs('enquetes.create')">
                 {{ __('Criar Enquete') }}
             </x-responsive-nav-link>
         </div>
