@@ -31,19 +31,19 @@
                         <div id="opcoes" class="flex flex-col space-y-2">
                             <x-input-label class="mt-2" for="opcoes">Opções de resposta:</x-input-label>
                             <div class="flex items-center">
-                                <x-text-input required autocomplete="off" name="opcoes[1][titulo]" placeholder="{{ __('Escreva uma opção de resposta') }}"
+                                <x-text-input required autocomplete="off" name="opcoes[1][]" placeholder="{{ __('Escreva uma opção de resposta') }}"
                                     class="block w-3/4 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
                                 <span class=" ms-2 py-2 font-medium text-sm text-gray-700 h-auto">(*)Obrigatório</span>
                             </div>
 
                             <div class="flex items-center">
-                                <x-text-input required autocomplete="off" name="opcoes[1][titulo]" placeholder="{{ __('Escreva uma opção de resposta') }}"
+                                <x-text-input required autocomplete="off" name="opcoes[1][]" placeholder="{{ __('Escreva uma opção de resposta') }}"
                                     class="block w-3/4 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
                                 <span class=" ms-2 py-2 font-medium text-sm text-gray-700 h-auto">(*)Obrigatório</span>
                             </div>
 
                             <div class="flex items-center">
-                                <x-text-input required autocomplete="off" name="opcoes[1][titulo]" placeholder="{{ __('Escreva uma opção de resposta') }}"
+                                <x-text-input required autocomplete="off" name="opcoes[1][]" placeholder="{{ __('Escreva uma opção de resposta') }}"
                                     class="block w-3/4 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
                                 <span class=" ms-2 py-2 font-medium text-sm text-gray-700 h-auto">(*)Obrigatório</span>
                             </div>
@@ -97,19 +97,19 @@
                     <div id="opcoes" class="flex flex-col space-y-2">
                         <x-input-label class="mt-2" for="pergunta">Opções de resposta:</x-input-label>
                         <div class="flex items-center">
-                            <x-text-input name="opcoes[`+i+`][titulo]" required autocomplete="off" placeholder="{{ __('Escreva uma opção de resposta') }}"
+                            <x-text-input name="opcoes[`+i+`][]" required autocomplete="off" placeholder="{{ __('Escreva uma opção de resposta') }}"
                                 class="block w-3/4 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
                             <span class=" ms-2 py-2 font-medium text-sm text-gray-700 h-auto">(*)Obrigatório</span>
                         </div>
 
                         <div class="flex items-center">
-                            <x-text-input name="opcoes[`+i+`][titulo]" required autocomplete="off" placeholder="{{ __('Escreva uma opção de resposta') }}"
+                            <x-text-input name="opcoes[`+i+`][]" required autocomplete="off" placeholder="{{ __('Escreva uma opção de resposta') }}"
                                 class="block w-3/4 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
                             <span class=" ms-2 py-2 font-medium text-sm text-gray-700 h-auto">(*)Obrigatório</span>
                         </div>
 
                         <div class="flex items-center">
-                            <x-text-input name="opcoes[`+i+`][titulo]" required autocomplete="off" placeholder="{{ __('Escreva uma opção de resposta') }}"
+                            <x-text-input name="opcoes[`+i+`][]" required autocomplete="off" placeholder="{{ __('Escreva uma opção de resposta') }}"
                                 class="block w-3/4 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></x-text-input>
                             <span class=" ms-2 py-2 font-medium text-sm text-gray-700 h-auto">(*)Obrigatório</span>
                         </div>

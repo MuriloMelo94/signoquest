@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EnquetesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VotosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +31,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('enquetes', EnquetesController::class)
-    ->only(['index', 'create', 'store'])
+    ->only(['index', 'create', 'show', 'store', 'edit', 'update'])
+    ->middleware(['auth']);
+
+require __DIR__.'/auth.php';
+
+Route::resource('votos', VotosController::class)
+    ->only(['index', 'store'])
     ->middleware(['auth']);
 
 require __DIR__.'/auth.php';
