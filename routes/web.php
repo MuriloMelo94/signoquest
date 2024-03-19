@@ -31,13 +31,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('enquetes', EnquetesController::class)
-    ->only(['index', 'create', 'show', 'store', 'edit', 'update'])
-    ->middleware(['auth']);
+    ->only(['index', 'create', 'store', 'show', 'edit', 'update'])
+    ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
 
 Route::resource('votos', VotosController::class)
     ->only(['index', 'store'])
-    ->middleware(['auth']);
+    ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
