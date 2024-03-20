@@ -1,4 +1,9 @@
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Enquetes') }}
+        </h2>
+    </x-slot>
     <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
         @foreach ($enquetes as $enquete)
             <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
@@ -40,6 +45,24 @@
                                 <small class="w-fit text-sm text-green-600 rounded-full">
                                     {{ __('Em andamento') }}
                                 </small>
+                                @if ($enquete->user->is(auth()->user()))
+                                    <x-dropdown>
+                                        <x-slot name="trigger">
+                                            <button>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400"
+                                                    viewBox="0 0 20 20" fill="currentColor">
+                                                    <path
+                                                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                </svg>
+                                            </button>
+                                        </x-slot>
+                                        <x-slot name="content">
+                                            <x-dropdown-link :href="route('votos.show',[ 'voto' => $enquete->id])">
+                                                {{ __('Resultados') }}
+                                            </x-dropdown-link>
+                                        </x-slot>
+                                    </x-dropdown>
+                                @endif
                                 <x-secondary-button class="mt-3 self-center">
                                     <x-dropdown-link :href="route('enquetes.show', ['enquete' => $enquete])">
                                         {{ __('Votar') }}
@@ -49,6 +72,24 @@
                                 <small class="w-fit text-sm text-amber-700 rounded-full">
                                     {{ __('Finalizada') }}
                                 </small>
+                                @if ($enquete->user->is(auth()->user()))
+                                    <x-dropdown>
+                                        <x-slot name="trigger">
+                                            <button>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400"
+                                                    viewBox="0 0 20 20" fill="currentColor">
+                                                    <path
+                                                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                </svg>
+                                            </button>
+                                        </x-slot>
+                                        <x-slot name="content">
+                                            <x-dropdown-link :href="route('votos.show',[ 'voto' => $enquete])">
+                                                {{ __('Resultados') }}
+                                            </x-dropdown-link>
+                                        </x-slot>
+                                    </x-dropdown>
+                                @endif
                             @elseif ($dataInicio->gte($hoje))
                                 <small class="w-fit text-sm text-sky-700 rounded-full">
                                     {{ __('Não iniciada') }}
@@ -65,6 +106,9 @@
                                             </button>
                                         </x-slot>
                                         <x-slot name="content">
+                                            <x-dropdown-link :href="route('votos.index', $enquete->id)">
+                                                {{ __('Resultados') }}
+                                            </x-dropdown-link>
                                             <x-dropdown-link :href="route('enquetes.edit', [
                                                 'enquete' => $enquete,
                                             ])">

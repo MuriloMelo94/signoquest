@@ -37,7 +37,7 @@ Route::resource('enquetes', EnquetesController::class)
 require __DIR__.'/auth.php';
 
 Route::resource('votos', VotosController::class)
-    ->only(['index', 'store'])
+    ->only(['index', 'store', 'show'])
     ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enquetes;
+use App\Models\Perguntas;
 use App\Models\votos;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,9 @@ class VotosController extends Controller
      */
     public function index()
     {
-        return view('votos.index');
+
+        return view('votos.confirm-voto');
+
     }
 
     /**
@@ -35,7 +39,26 @@ class VotosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validated = $request->validate([
+            'respostas' => 'required',
+            'enquete_id' => 'required|numeric'
+        ]);
+
+        foreach($validated['respostas'] as $chaveResposta => $valorResposta){
+            $respostas['perguntas_id'] = (int) $chaveResposta;
+            $respostas['opcoes_escolhidas_id'] = (int) $valorResposta;
+        }
+
+        $voto = new votos();
+
+        $voto->user_id = auth()->user()->id;
+        $voto->enquete_id = $validated['enquete_id'];
+        $voto->respostas = $respostas;
+
+        $voto->save();
+
+        return redirect(route('votos.index'));
     }
 
     /**
@@ -44,9 +67,12 @@ class VotosController extends Controller
      * @param  \App\Models\votos  $votos
      * @return \Illuminate\Http\Response
      */
-    public function show(votos $votos)
+    public function show(int $id)
     {
-        //
+        return view('votos.index', [
+            'enquete' => Enquetes::with('user', 'perguntas', 'votos')->where('id', '=', $id)->first(),
+            'perguntas' => Perguntas::with('opcoes')->where('id', '=', $id)->get(),
+        ]);
     }
 
     /**

@@ -1,4 +1,9 @@
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Votar') }}
+        </h2>
+    </x-slot>
     <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
         <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
             <div class="p-6 flex space-x-2">
@@ -26,22 +31,24 @@
             </div>
         </div>
 
-        <form method="POST" action="">
+        <form method="POST" action="{{ route('votos.store')}}">
             @csrf
             @php
                 $i = 1;
-            @endphp
+                @endphp
+            <x-text-input name="enquete_id" required hidden readonly value="{{ $enquete->id }}"/>
             @foreach ($perguntas as $pergunta)
+            <fieldset>
                 <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
                     <div class="p-6 flex flex-col space-x-2">
                         <div class="flex justify-between">
-                            <p class="my-3 font-semibold"> {{ $i }}. {{ $pergunta->titulo }}</p>
-                            <span class="me-3 self-center font-medium text-sm text-gray-700 h-auto">(*)Obrigatório</span>
+                            <legend class="my-3 font-semibold"> {{ $i }}. {{ $pergunta->titulo }}</legend>
+                            <span class="me-3 self-center font-medium text-sm text-gray-700 h-auto">(*)Obrigatória</span>
                         </div>
                         <div class="flex flex-col gap-y-2">
                             @foreach ($pergunta->opcoes as $opcao)
                                 <div class="flex justify-start items-center">
-                                    <x-radio-input required name="{{ $pergunta->id }}" value="{{ $opcao->id }}" />
+                                    <x-radio-input required name="respostas[{{ $pergunta->id }}]" id="{{ $opcao->id }}" value="{{ $opcao->id }}" />
                                     <x-input-label class="ms-2 place-content-center"
                                         for="{{ $opcao->id }}">{{ $opcao->titulo }}</x-input-label>
                                 </div>
@@ -49,6 +56,8 @@
                         </div>
                     </div>
                 </div>
+
+            </fieldset>
                 @php
                     $i++;
                 @endphp
