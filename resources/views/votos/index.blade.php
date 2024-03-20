@@ -46,7 +46,7 @@
         <form method="POST" action="">
             @csrf
             @php
-                $i = 1;
+                $sequenciaPergunta = 1;
             @endphp
             <x-text-input name="enquete_id" required hidden readonly value="{{ $enquete->id }}" />
             @foreach ($perguntas as $pergunta)
@@ -54,7 +54,7 @@
                     <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
                         <div class="p-6 flex flex-col space-x-2">
                             <div class="flex justify-between">
-                                <legend class="my-3 font-semibold"> {{ $i }}. {{ $pergunta->titulo }}
+                                <legend class="my-3 font-semibold"> {{ $sequenciaPergunta }}. {{ $pergunta->titulo }}
                                 </legend>
                             </div>
                             <div class="flex flex-col gap-y-2">
@@ -64,16 +64,14 @@
                                             {{ $opcao->titulo }}
                                         </x-input-label>
 
-
                                         @php
                                             $j = 0;
                                         @endphp
                                         @foreach ($enquete->votos as $chave => $voto)
-
                                             @if ($voto->respostas['perguntas_id'] == $pergunta->id && $voto->respostas['opcoes_escolhidas_id'] == $opcao->id)
-                                                @php
-                                                    $j++
-                                                @endphp
+                                            @php
+                                                $j++;
+                                            @endphp
                                             @endif
                                         @endforeach
                                         <small class="ms-2 place-content-center text-sm text-gray-600">Total de votos:
@@ -86,7 +84,7 @@
 
                 </fieldset>
                 @php
-                    $i++;
+                    $sequenciaPergunta++;
                 @endphp
             @endforeach
         </form>

@@ -71,7 +71,7 @@ class VotosController extends Controller
     {
         return view('votos.index', [
             'enquete' => Enquetes::with('user', 'perguntas', 'votos')->where('id', '=', $id)->first(),
-            'perguntas' => Perguntas::with('opcoes')->where('id', '=', $id)->get(),
+            'perguntas' => Perguntas::with('opcoes')->where('enquete_id', '=', $id)->get(),
         ]);
     }
 
