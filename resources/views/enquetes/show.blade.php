@@ -34,11 +34,14 @@
             @foreach ($perguntas as $pergunta)
                 <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
                     <div class="p-6 flex flex-col space-x-2">
-                        <p class="my-3 font-semibold"> {{ $i }}. {{ $pergunta->titulo }}</p>
+                        <div class="flex justify-between">
+                            <p class="my-3 font-semibold"> {{ $i }}. {{ $pergunta->titulo }}</p>
+                            <span class="me-3 self-center font-medium text-sm text-gray-700 h-auto">(*)Obrigatório</span>
+                        </div>
                         <div class="flex flex-col gap-y-2">
                             @foreach ($pergunta->opcoes as $opcao)
                                 <div class="flex justify-start items-center">
-                                    <x-radio-input name="{{ $pergunta->id }}" value="{{ $opcao->id }}" />
+                                    <x-radio-input required name="{{ $pergunta->id }}" value="{{ $opcao->id }}" />
                                     <x-input-label class="ms-2 place-content-center"
                                         for="{{ $opcao->id }}">{{ $opcao->titulo }}</x-input-label>
                                 </div>

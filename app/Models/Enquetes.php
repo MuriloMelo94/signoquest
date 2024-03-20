@@ -26,4 +26,9 @@ class Enquetes extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function votos()
+    {
+        return $this->hasMany(Votos::class, 'enquete_id');
+    }
 }
