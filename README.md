@@ -1,5 +1,4 @@
 
-```markdown
 # SignoQuest
 
 Este projeto é o resultado do desafio para a vaga de estagiário Dev na SignoTechnology, utilizando Laravel para construir um CRUD de enquetes e um sistema de votação com contabilização de votos.
