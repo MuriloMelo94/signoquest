@@ -70,6 +70,13 @@
                                             ])">
                                                 {{ __('Editar') }}
                                             </x-dropdown-link>
+                                            <form method="POST" action="{{ route('enquetes.destroy', $enquete, $enquete->id) }}">
+                                                @csrf
+                                                @method('delete')
+                                                <x-dropdown-link :href="route('enquetes.destroy', $enquete, $enquete->id)" onclick="event.preventDefault(); this.closest('form').submit();">
+                                                    {{ __('Deletar') }}
+                                                </x-dropdown-link>
+                                            </form>
                                         </x-slot>
                                     </x-dropdown>
                                 @endif

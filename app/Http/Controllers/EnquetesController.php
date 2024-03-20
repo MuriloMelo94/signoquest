@@ -218,8 +218,16 @@ class EnquetesController extends Controller
      * @param  \App\Models\Enquetes  $enquetes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Enquetes $enquetes)
+    public function destroy(int $id): RedirectResponse
     {
-        //
+        $enquete = Enquetes::where('id', '=', $id)->first();
+
+        if ($enquete) {
+            if (auth()->check() && $enquete->user->id === auth()->user()->id) {
+
+                $enquete->delete();
+                return redirect(route('enquetes.index'));
+            }
+        }
     }
 }
